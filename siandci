@@ -1,0 +1,75 @@
+class Engine {
+    private String type;
+
+    public Engine(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+}
+
+class Car {
+    private Engine engine;
+
+    // Constructor Injection
+    public Car(Engine engine) {
+        this.engine = engine;
+    }
+
+    public void displayEngineType() {
+        System.out.println("Engine Type: " + engine.getType());
+    }
+}
+
+public class ConstructorInjectionExample {
+    public static void main(String[] args) {
+        // Injecting dependency through the constructor
+        Engine engine = new Engine("V8");
+        Car car = new Car(engine);
+
+        car.displayEngineType();
+    }
+}
+
+---------------------------------------------------------------------------------------------
+
+class Engine {
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+}
+
+class Car {
+    private Engine engine;
+
+    // Setter Injection
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    public void displayEngineType() {
+        System.out.println("Engine Type: " + engine.getType());
+    }
+}
+
+public class SetterInjectionExample {
+    public static void main(String[] args) {
+        // Injecting dependency through the setter method
+        Engine engine = new Engine();
+        engine.setType("V6");
+
+        Car car = new Car();
+        car.setEngine(engine);
+
+        car.displayEngineType();
+    }
+}
+
